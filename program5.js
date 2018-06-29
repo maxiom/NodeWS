@@ -1,5 +1,7 @@
 var fs = require('fs');
+var path = require('path');
 
+var ext = '.' + process.argv[3];
 /*
 * path <string>
 * options <Object | string>
@@ -11,8 +13,7 @@ fs.readdir(process.argv[2], 'utf8', function(err, files){
   }
 
   for(var i = 0; i < files.length; i++){
-    var extension = files[i].split('.')[1];
-    if(extension == process.argv[3]){
+    if(path.extname(files[i]) === ext){
       console.log(files[i]);
     }
   }
